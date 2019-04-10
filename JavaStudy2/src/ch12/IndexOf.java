@@ -3,19 +3,20 @@ package ch12;
 class IndexOf {
 	public static void main(String args[]) {
 		String str = "Java 개발자 양성을 통한 취업연계과정!!";
-		int count = 0;
-		int idx = str.indexOf(" ");
-		System.out.println(idx);
+		
+		int sidx = 0;
+		int eidx = 0;
 		
 		while (true) {
-			count++;
-			idx = str.indexOf(" ",idx+1);
-			if (idx == -1) {
+			
+			eidx = str.indexOf(" ",sidx+1);
+			if (eidx == -1) {
 				break;
 			}
-			System.out.println(idx);
+			System.out.println(sidx + ","+eidx);
+			sidx = eidx;
 			
 		}
-		System.out.println(count);
+		
 	}
 }
