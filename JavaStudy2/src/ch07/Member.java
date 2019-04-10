@@ -2,7 +2,7 @@ package ch07;
 
 public class Member {
 
-	String id; // 아이디
+	static String id; // 아이디
 	String password; // 비밀번호
 	String name; // 이름
 	int age; // 나이
