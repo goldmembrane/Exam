@@ -4,6 +4,7 @@ public class Car3 {
  int door;
  public static void main(String[] args) {
 	Car3 c= new Car3();
+	c.color = "REd";
 }
 public Car3() {
 	
