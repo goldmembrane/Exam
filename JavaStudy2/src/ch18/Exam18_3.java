@@ -15,10 +15,12 @@ public class Exam18_3 {
 		
 
 		// 미리 선택한 번호를 제외하고 나머지 랜덤 생성 후 저장
-		for (int i = 0; i < 3; i++) {
-			int lottoNum = (int)(Math.random()*45)+1;
-			lotto.add(lottoNum);
+		while(true) {
+			if(lotto.size() == 6) break;
+			int num = (int)(Math.random()*45)+1;
+			lotto.add(num);
 		}
+		
 		
 		// 선택(저장)된 로또 번호 확인(출력)
 		Iterator<Integer> iter = lotto.iterator();
