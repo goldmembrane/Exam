@@ -15,7 +15,6 @@ public class FileIOStreamExam1 {
 		BufferedOutputStream bos = null;
 		try {
 			fis = new FileInputStream("c:/dev/big.bin");
-			
 			fos = new FileOutputStream("c:/dev/big2.bin");
 			bis = new BufferedInputStream(fis);
 			bos = new BufferedOutputStream(fos);

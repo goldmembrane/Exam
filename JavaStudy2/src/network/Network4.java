@@ -14,17 +14,18 @@ import org.json.JSONObject;
 public class Network4 {
 	public static void main(String[] args) {
 		try {
-			URL url = new URL("https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCLkoB0Bwiiem7_uVKZX9soG3IFJDqIMrw&q=원피스");
+			URL url = new URL(
+					"https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCLkoB0Bwiiem7_uVKZX9soG3IFJDqIMrw&q=원피스");
 			URLConnection con = url.openConnection();
-			
-			
+
 			InputStream in = con.getInputStream();
 			InputStreamReader isr = new InputStreamReader(in, "utf-8");
 			BufferedReader reader = new BufferedReader(isr);
 			String result = "";
-			while(true) {
+			while (true) {
 				String data = reader.readLine();
-				if(data == null) break;
+				if (data == null)
+					break;
 				result += data;
 //				System.out.println(data);
 			}
@@ -44,8 +45,3 @@ public class Network4 {
 		}
 	}
 }
-
-
-
-
-
