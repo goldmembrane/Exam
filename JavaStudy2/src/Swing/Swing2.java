@@ -14,9 +14,7 @@ public class Swing2 {
 		// 요소 배치 설정
 		j.setLayout(new FlowLayout());
 
-		JButton b1 = new JButton("버튼1");
-		b1.addMouseListener(new MouseListener() {
-
+		MouseListener  ml = new MouseListener() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -35,19 +33,22 @@ public class Swing2 {
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				JButton b = (JButton)e.getSource(); // 버튼
+				JButton b = (JButton)e.getSource();
 				String text = b.getText();
 				System.out.println(text);
 			}
-		});
+		};
+		JButton b1 = new JButton("버튼1");
+		b1.addMouseListener(ml);
 		JButton b2 = new JButton();
 		b2.setText("버튼2");
+		b2.addMouseListener(ml);
 
 		// 버튼 추가
 		j.add(b1);
 		j.add(b2);
 		// 크기 지정 (w,h)
-		j.setSize(200, 100);
+		j.setSize(1000, 100);
 		// 끄게 만드는 장치
 		j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// 보이기
