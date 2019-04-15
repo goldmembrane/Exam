@@ -2,6 +2,7 @@ package Swing;
 
 import java.awt.Desktop;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.BufferedReader;
@@ -16,6 +17,8 @@ import java.net.URLConnection;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -42,6 +45,8 @@ public static void main(String[] args) {
 
 		// 요소 배치 설정
 		j.setLayout(new FlowLayout());
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(0,1));
 		
 		MouseListener ml = new MouseListener() {
 			@Override
@@ -74,6 +79,7 @@ public static void main(String[] args) {
 //		System.out.println(result);
 		JSONObject obj = new JSONObject(result);
 		JSONArray documents = obj.getJSONArray("documents");
+		JScrollPane jp = new JScrollPane(panel);
 		for (int i = 0; i < documents.length(); i++) {
 			JSONObject doc = documents.getJSONObject(i);
 			String image_url = doc.getString("image_url");
@@ -82,6 +88,7 @@ public static void main(String[] args) {
 			j.add(b1);
 			b1.addMouseListener(ml);
 		}
+		j.add(jp);
 		j.setSize(500,300);
 		j.setVisible(true);
 	} catch (MalformedURLException e) {

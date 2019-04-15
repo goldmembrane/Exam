@@ -2,6 +2,8 @@ package Swing;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -33,15 +35,32 @@ public class Exam21_2 {
 		/* JPanel2 Ãß°¡ */
 		JPanel panel2 = new JPanel();
 		panel2.setLayout(new GridLayout(3,3));
-		panel2.add(new JButton("1"));
-		panel2.add(new JButton("2"));
-		panel2.add(new JButton("3"));
-		panel2.add(new JButton("4"));
-		panel2.add(new JButton("5"));
-		panel2.add(new JButton("6"));
-		panel2.add(new JButton("7"));
-		panel2.add(new JButton("8"));
-		panel2.add(new JButton("9"));
+		MouseListener ml = new MouseListener() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JButton btn = (JButton)e.getComponent();
+				String text = btn.getText();
+				label.setText(label.getText() + text);
+			}
+		};
+		
+		for (int i = 9; i >=1; i--) {
+			JButton btn = new JButton(i + "");
+			btn.addMouseListener(ml);
+			panel2.add(btn);
+		}
 		
 		frm.add(panel1, BorderLayout.SOUTH);
 		frm.add(panel2, BorderLayout.CENTER);
