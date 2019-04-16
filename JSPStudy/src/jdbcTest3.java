@@ -4,18 +4,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class jdbcTest {
+import DB.DBManager;
+
+public class jdbcTest3 {
 	public static void main(String[] args) {
 
+	
+		
 		try {
-			// 1. 라이브러리를 메모리 등록
-			Class.forName("com.mysql.jdbc.Driver");
-
-			// 2. DB 연결
-			String url = "jdbc:mysql://localhost:3306/java";
-			String id = "root";
-			String pw = "mysql";
-			Connection con = DriverManager.getConnection(url, id, pw);
+			DBManager db = DBManager.getInstance();
+			Connection con = db.open();
 			
 			// 3. Query 실행 준비
 			String sql = "select * from 고객";

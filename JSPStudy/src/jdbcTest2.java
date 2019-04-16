@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class jdbcTest {
+public class jdbcTest2 {
 	public static void main(String[] args) {
 
 		try {
@@ -18,16 +18,13 @@ public class jdbcTest {
 			Connection con = DriverManager.getConnection(url, id, pw);
 			
 			// 3. Query 실행 준비
-			String sql = "select * from 고객";
+			String sql = "insert into 고객 (고객아이디, 고객이름) values";
+			sql += "   (null, ?)";
 			PreparedStatement stmt = con.prepareStatement(sql);
-			
+			stmt.setString(1, "python");
 			// 4. Query 실행
-			ResultSet rs= stmt.executeQuery();
-			while(rs.next()) {
-				int age = rs.getInt("나이");
-				String customerId = rs.getString("고객아이디");
-				System.out.println(age + " " + customerId);
-			}
+			stmt.executeUpdate();
+			
 			} catch (ClassNotFoundException e) {
 
 			e.printStackTrace();
