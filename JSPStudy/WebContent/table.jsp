@@ -14,15 +14,19 @@
  </tr>
 <%
 	for(int i = 0; i<tableData.length; i++) {
+		if(i % 2 == 0) {
+			out.println("<tr style='background:gray;'>");
+		}else{
 		out.println("<tr>");
+		}
 		for(int j = 0; j<tableData[i].length; j++) {
 			out.println("<td>");
 			out.println(tableData[i][j]);
 			out.println("</td>");
-			
 		}
 		out.println("</tr>");
 	}
+	
 %>
  </table>
 </body>
