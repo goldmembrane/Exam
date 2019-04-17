@@ -27,6 +27,7 @@
 		}
 		if(isOk == true) {
 			out.println("로그인되었습니다.");
+			session.setAttribute("id", id);
 		}else {
 			out.println("다시 입력해주세요");
 		}
