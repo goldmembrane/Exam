@@ -8,31 +8,27 @@
 
 <%
 	String id = request.getParameter("id");
-
+	String pw = request.getParameter("pw");
+	
+	
 	try {
 		DBManager db = DBManager.getInstance();
 		Connection con = db.open();
 		
 		// 3. Query 실행 준비
-		String sql = "select * from article where id = ?";
+		String sql = "select id from person_info where id=? and pw=?";
 		PreparedStatement stmt = con.prepareStatement(sql);
 		stmt.setString(1, id);
-		
+		stmt.setString(2, pw);
 		ResultSet rs = stmt.executeQuery();
+		boolean isOk = false;
 		if(rs.next()) {
-			String num = rs.getString("id");
-			String title = rs.getString("title");
-			String content = rs.getString("content");
-			String hit = rs.getString("hit");
-			String id2 = rs.getString("id2");
-%>
-			<h1><%=title%>/ <%=num %></h1>
-			<p><%=content %></p>
-			<p><%=hit %></p>
-			<p><%=id2 %></p>
-			<button type="button" onclick="location='update.jsp?id=<%=id%>'">수정</button>
-			<button type="button" onclick="del()">삭제</button>
-<%
+			isOk = true;
+		}
+		if(isOk == true) {
+			out.println("로그인되었습니다.");
+		}else {
+			out.println("다시 입력해주세요");
 		}
 		} catch (ClassNotFoundException e) {
 		e.printStackTrace();
@@ -40,14 +36,3 @@
 		e.printStackTrace();
 	}
 %>
-
-
-
-<script>
-	function del() {
-		var isOk = confirm("삭제하시겠습니까?");
-		if(isOk) {
-			location = 'delete_proc.jsp?id=<%=id%>';
-		}
-	}
-</script>
