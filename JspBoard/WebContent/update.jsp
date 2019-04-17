@@ -26,16 +26,18 @@
 			String hit = rs.getString("hit");
 			String id2 = rs.getString("id2");
 %>
-			<h1><%=title%>/ <%=num %></h1>
-			<p><%=content %></p>
-			<p><%=hit %></p>
-			<p><%=id2 %></p>
-			<button type="button" onclick="location='update.jsp?id=<%=id%>'">수정</button>
-<%
+	<form method="post" action="update_proc.jsp">
+		제목 : <input type="text" name="title" value="<%=title%>"><br>
+		내용 : <textarea name="content"><%=content%></textarea><br>
+		<input type="hidden" name="id" value="<%=id%>">
+		<input type="submit" value="수정완료">
+	</form>
+<%		
 		}
-		} catch (ClassNotFoundException e) {
+		
+	} catch (ClassNotFoundException e) {
 		e.printStackTrace();
 	} catch (SQLException e) {
 		e.printStackTrace();
-	}
+	}	
 %>
