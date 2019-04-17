@@ -3,8 +3,8 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="DB.DBManager"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 
 <%
 	String id = request.getParameter("id");
@@ -15,7 +15,7 @@
 		DBManager db = DBManager.getInstance();
 		Connection con = db.open();
 		
-		// 3. Query ½ÇÇà ÁØºñ
+		// 3. Query ì‹¤í–‰ ì¤€ë¹„
 		String sql = "insert into member values (?, ?, ?)";
 		PreparedStatement stmt = con.prepareStatement(sql);
 		stmt.setString(1, id);

@@ -3,22 +3,22 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="DB.DBManager"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%
 try {
 	DBManager db = DBManager.getInstance();
 	Connection con = db.open();
 	
-	// 3. Query ½ÇÇà ÁØºñ
-	String sql = "select * from °í°´";
+	// 3. Query ì‹¤í–‰ ì¤€ë¹„
+	String sql = "select * from ê³ ê°";
 	PreparedStatement stmt = con.prepareStatement(sql);
 	
-	// 4. Query ½ÇÇà
+	// 4. Query ì‹¤í–‰
 	ResultSet rs= stmt.executeQuery();
 	while(rs.next()) {
-		int age = rs.getInt("³ªÀÌ");
-		String customerId = rs.getString("°í°´¾ÆÀÌµð");
+		int age = rs.getInt("ë‚˜ì´");
+		String customerId = rs.getString("ê³ ê°ì•„ì´ë””");
 		out.println(age + " " + customerId);
 	}
 	} catch (ClassNotFoundException e) {

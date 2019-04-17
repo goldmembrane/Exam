@@ -1,8 +1,8 @@
 <%@page import="org.jsoup.select.Elements"%>
 <%@page import="org.jsoup.Jsoup"%>
 <%@page import="org.jsoup.nodes.Document" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%
 	Document doc = Jsoup.connect("https://dhlottery.co.kr/gameResult.do?method=byWin&drwNo=582").get();
 	Elements el = doc.select("div.win span.ball_645");
@@ -21,7 +21,7 @@
 %>
 <input type=file onchange="openQRCamera(this);">
 
-<p>QR ³»¿ë</p>
+<p>QR ë‚´ìš©</p>
 <div id='result'></div>
 
 <script src="qr_packed.js"></script>
@@ -43,7 +43,7 @@
 					var end = res.substring(eidx);
 					res = start + '<%=result%>' + end;
 					
-					document.getElementById('result').innerHTML = "<a href="+res+">´çÃ·È®ÀÎ</a>";
+					document.getElementById('result').innerHTML = "<a href="+res+">ë‹¹ì²¨í™•ì¸</a>";
 				}
 			};
 			qrcode.decode(reader.result);

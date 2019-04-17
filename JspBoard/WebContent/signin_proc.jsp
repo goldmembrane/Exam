@@ -3,8 +3,8 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="DB.DBManager"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 
 <%
 	String id = request.getParameter("id");
@@ -15,7 +15,7 @@
 		DBManager db = DBManager.getInstance();
 		Connection con = db.open();
 		
-		// 3. Query ½ÇÇà ÁØºñ
+		// 3. Query ì‹¤í–‰ ì¤€ë¹„
 		String sql = "select id from member where id=? and pw=?";
 		PreparedStatement stmt = con.prepareStatement(sql);
 		stmt.setString(1, id);
@@ -26,9 +26,9 @@
 			isOk = true;
 		}
 		if(isOk == true) {
-			out.println("·Î±×ÀÎµÇ¾ú½À´Ï´Ù.");
+			out.println("ë¡œê·¸ì¸ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		}else {
-			out.println("´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä");
+			out.println("ë‹¤ì‹œ ìž…ë ¥í•´ì£¼ì„¸ìš”");
 		}
 		} catch (ClassNotFoundException e) {
 		e.printStackTrace();
