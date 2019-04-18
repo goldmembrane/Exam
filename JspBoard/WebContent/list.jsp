@@ -89,13 +89,7 @@
 		if(endPage>totalPage) {
 			endPage = totalPage;
 		}
-// 		 <ul class="pagination">
-// 		  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-// 		  <li class="page-item"><a class="page-link" href="#">1</a></li>
-// 		  <li class="page-item"><a class="page-link" href="#">2</a></li>
-// 		  <li class="page-item"><a class="page-link" href="#">3</a></li>
-// 		  <li class="page-item"><a class="page-link" href="#">Next</a></li>
-// 		</ul>
+
 		out.println("<ul class=\"pagination\">");
 		for(int i = startPage; i<=endPage; i++) {
 			
