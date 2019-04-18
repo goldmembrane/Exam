@@ -5,6 +5,12 @@
 <%@page import="DB.DBManager"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>	
+	
+	
 
 <%
 	String pageStr = request.getParameter("page");
@@ -62,10 +68,23 @@
 		if(endPage>totalPage) {
 			endPage = totalPage;
 		}
+// 		 <ul class="pagination">
+// 		  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+// 		  <li class="page-item"><a class="page-link" href="#">1</a></li>
+// 		  <li class="page-item"><a class="page-link" href="#">2</a></li>
+// 		  <li class="page-item"><a class="page-link" href="#">3</a></li>
+// 		  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+// 		</ul>
+		out.println("<ul class=\"pagination\">");
 		for(int i = startPage; i<=endPage; i++) {
-			out.println("<a href=list.jsp?page=" + i + ">" + i +"</a>");
+			
+			
+%>
+			<li class="page-item">
+			<a class="page-link" href="list.jsp?page=<%=i%>"><%=i%></a></li>
+<%
 		}
-		
+		out.println("</ul>");
 	} catch (ClassNotFoundException e) {
 		e.printStackTrace();
 	} catch (SQLException e) {
