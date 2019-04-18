@@ -1,21 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<input type="text" id="address">
-<button type="button" onclick="move()">지도 보기</button>
-<div id="map" style="width:500px;height:400px;"></div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a1175c39371d12cdc937c8e9a711af4"></script>
+
+<%
+
+	request.setCharacterEncoding("utf-8");
+	String query = request.getParameter("query");
+	if(query == null) {
+		// 처음 페이지를 호출한 상태
+		out.println("처음");
+	}else {
+		// 번역할 문장을 넘겨준 상태
+		out.println(query);
+	}
+
+
+%>
+<form method="post" action="trans.jsp">
+<input type="text" id="address" name="query">
+<button type="submit">지도 보기</button>
+</form>
+
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
+
 	function move() {
 	$.ajax( {
 		address = $("#address").val();
 		
-		url: "https://dapi.kakao.com/v2/local/search/address.json",
+		url: 'https://kapi.kakao.com/v1/translation/translate',
 		type: 'get',
 		 beforeSend : function(xhr){
 	            xhr.setRequestHeader("Authorization", "KakaoAK 361f8248faef88857f11f4e93c3f5eb8");
 	            },
-		data: {"query" : address },
+		data: {"src_lang" :"kr" ,
+				"target_lang" : "jp",
+				"query" : address },
 		success: function(result) {
 			documents = result.documents;
 			doc = documents[0];
@@ -46,3 +65,5 @@
 		marker.setMap(map);
 	}
 </script>
+
+    
